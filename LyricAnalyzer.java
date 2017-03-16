@@ -35,21 +35,44 @@ public class LyricAnalyzer {
 
 	public static void displayLyrics(HashMap<String, ArrayList<Integer>> map) {
 
-		// Complete this method.
+		Set<String> wordSet = map.keySet();
+		int allWordsLength = 0;
+		for (String word : wordSet) {
+			allWordsLength += map.get(word).size();
+		}
+		String[] wordArray = new String[allWordsLength + 1];
+		for (String word : wordSet) {
+			for (int index = 0; index < map.get(word).size(); index++) {
+				int location = map.get(word).get(index);
+				if (location < 0) {
+					wordArray[-location] = word;
+					word += "\n";
+				}
+				wordArray[location] = word;
+			}
+		}
+		for (int i = 1; i < wordArray.length + 1; i++) {
+			System.out.print(wordArray[i]);
+		}
 	}
 
 	public static int count(HashMap<String, ArrayList<Integer>> map) {
 
-		return map.size();
+		return map.keySet().size();
 	}
 
 	public static String mostFrequentWord(HashMap<String, ArrayList<Integer>> map) {
-		/*
-		Set<String> wordSet = map.keySet();
 
-		for(String word:wordSet){
-			int positionNums=map.get(word).size();
-		}*/
+		Set<String> wordSet = map.keySet();
+		 /*int[] positionNums=new int[map.size()];
+		 int i = 0;*/
+		 for (String word : wordSet) {
+			/*positionNums[i] = map.get(word).size();
+			i++;*/
+			map.get(word).size();
+		}
+		
+
 		return "not done!";
 	}
 
